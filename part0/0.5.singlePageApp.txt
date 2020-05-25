@@ -8,28 +8,3 @@ browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa.js
 server->browser: spa.js
 browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.js
 server->browser: [{"content":"HTML is easy","date":"2019-05-23T17:30:31.098Z"},...]
-
-note over browser:
-user adds text input and clicks button
-end note
-
-browser->server: HTTP POST https://fullstack-example.herokuapp.com/new_note_spa
-
-note over browser:
-browser sends the new note as JSON-data containing
-both the content of the note and the timestamp
-end note
-
-note over server:
-server responds with status code 201 created
-the server does not ask for a redirect and the
-browser stays on the same page and the browser
-sends no further HTTP requests
-end note
-
-server->browser: {"message":"note created"}
-
-note over browser:
-the browser uses the JavaScript that was fetched from the server
-to rerender the note list without reloading the entire page
-end note
